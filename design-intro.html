@@ -1,0 +1,145 @@
+<html>
+<head>
+	<title>Music Hack Day</title>
+	<script type="text/javascript" src="http://use.typekit.com/fgf3xxn.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script src="js/jquery.rdio.min.js"></script>
+	
+	<script type="text/javascript">
+    var duration = 1; // track the duration of the currently playing track
+    $(document).ready(function() {
+      $('#api').bind('ready.rdio', function() {
+        $(this).rdio().play('USWB19900847');
+      });
+      $('#api').bind('playingTrackChanged.rdio', function(e, playingTrack, sourcePosition) {
+        if (playingTrack) {
+          duration = playingTrack.duration;
+          $('#art').attr('src', playingTrack.icon);
+          $('#track').text(playingTrack.name);
+          $('#album').text(playingTrack.album);
+          $('#artist').text(playingTrack.artist);
+        }
+        });
+      $('#api').bind('positionChanged.rdio', function(e, position) {
+        $('#position').css('width', Math.floor(100*position/duration)+'%');
+      });
+      $('#api').bind('playStateChanged.rdio', function(e, playState) {
+        if (playState == 0) { // paused
+          $('#play').show();
+          $('#pause').hide();
+        } else {
+          $('#play').hide();
+          $('#pause').show();
+        }
+      });
+      // this is a valid playback token for localhost.
+      // but you should go get your own for your own domain.
+      $('#api').rdio('GAlNi78J_____zlyYWs5ZG02N2pkaHlhcWsyOWJtYjkyN2xvY2FsaG9zdEbwl7EHvbylWSWFWYMZwfc=');
+
+      $('#previous').click(function() { $('#api').rdio().previous(); });
+      $('#play').click(function() { $('#api').rdio().play(); });
+      $('#pause').click(function() { $('#api').rdio().pause(); });
+      $('#next').click(function() { $('#api').rdio().next(); });
+    });
+  </script>
+	
+	<style type="text/css">
+		body { margin: 0; padding: 0; background: #fff; font-family: Brevia, sans-serif; }
+		#container { width: 950px; margin: 35px auto; padding: 30px 0; border: 2px solid #fff; border-radius: 13px; background: #1d0c05 url(images/dndisturb.jpg) scroll no-repeat left center; color: #fff; -webkit-box-shadow: 0 0 23px rgba(0,0,0,0.35); }
+		#container header, #container #content { margin: 0 40px 0 414px; }
+		header { position: relative; }
+		header h1 { font: 92px/82px bello-pro, sans-serif; color: #e1b12b; -webkit-transform:rotate(-12deg); height: 150px; margin-top: 20px;  text-shadow: 2px 2px 0 black, 3px 3px 0 rgba(255,255,255,0.4); }
+		header h1 span, header h1 em { color: #fff; }
+		header h1 .the { font-size: 21px; position: absolute; top: -20px; left: -28px; border-radius: 50%; height: 38px; width: 38px; overflow: hidden; color: black; background: #fff; text-align: center; line-height: 44px; text-shadow: none; }
+		header h1 em {position: relative; top: -23px; left: 285px; font-size: 121px; color: #983C5F; }
+		header h1 .of { font-size: 46px; position: relative; left: -150px; top: 40px; }
+		
+		#container #content { text-align: center; }
+		
+		form label { display: none; }
+		form input { background: none; border: none; border-bottom: 1px dashed #444; font-size: 22px; padding: 0 3px 7px 3px; color: #fff; display: inline; text-align: center; font-family: Brevia, sans-serif; }
+		form input:-webkit-input-placeholder, form input:-moz-input-placeholder { color: #555; border-bottom-color: #fff; }
+		
+		form button { display: block; background: #983C5F; color: #fff; border-radius: 50%; font-size: 22px; border: none; font-family: Bello-Pro, sans-serif; font-weight: 400; height: 65px; width: 65px; line-height: 21px; text-align: center; margin: 30px auto 20px;  -webkit-transition: all ease-out 0.7s; }
+		
+		form button:hover { background: #e1b12b; -webkit-box-shadow: 0 0 18px #fff, 0 0 30px red; -webkit-transition: all ease-in 0.2s; }
+		
+		
+		
+		#rdio-playback { display: none; }
+
+		#circle { width: 160px; border-radius: 160px; background: white; height: 160px; }
+		#rest { height: 0; width: 100px; border-bottom: 180px solid white; border-left: 30px solid transparent; border-right: 30px solid transparent; margin-top: -44px; }
+
+		
+		
+		
+	</style>
+	
+</head>
+<body>
+
+<div id="container">
+
+<header>
+	<h1><span class="the">The</span> Soundtrack <span class="of">of</span> <em>You</em></h1>
+</header>
+
+<div id="content">
+	<p>When were you were born?</p>
+	
+	<form id="dateform">
+		<label for="day">Day</label>
+		<input type="text" id="day" size="3" placeholder="day" />
+		
+		<label for="day">Month</label>
+		<input type="text" id="month" size="12" placeholder="month" />
+		
+		<label for="day">Year</label>
+		<input type="text" id="year" size="4" placeholder="year" />
+		
+		<button type="submit">Play it!</button>
+	</form>
+
+
+
+
+<div id="keyhole">
+<div id="circle"></div>
+<div id="rest"></div>
+</div>
+
+
+
+<div id="rdio-playback">	
+	<div id="api"></div>
+  <img id="art" src="" height="200" width="200" style="float:left;margin-right:20px;">
+  <div>
+    <div><b>Track: </b><span id="track"></span></div>
+    <div><b>Album: </b><span id="album"></span></div>
+    <div><b>Artist: </b><span id="artist"></span></div>
+    <div><b>Position: </b>
+      <span style="display:inline-block;width:200px;border:1px solid black;">
+        <span id="position" style="display:inline-block;background-color:#666">&nbsp;</span>
+      </span></div>
+    <div>
+      <button id="previous">&lt;&lt;</button>
+      <button id="play">|&gt;</button>
+      <button id="pause">||</button>
+      <button id="next">&gt;&gt;</button>
+    </div>
+  </div>
+</div>
+	
+	
+	
+	
+	
+</div>
+
+</div>
+
+</body>
+</html>
