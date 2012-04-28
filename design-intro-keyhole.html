@@ -50,20 +50,22 @@
 		#container { width: 950px; margin: 35px auto; padding: 30px 0; color: #000; }
 		#container header, #container #content { margin: 0 40px 0 414px; }
 		header { position: relative; }
-		header h1 { font: 92px/82px bello-pro, sans-serif; color: #e1b12b; -webkit-transform:rotate(-12deg); height: 150px; margin-top: 20px;  text-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,0.3); }
-		header h1 span, header h1 em { color: #fff; }
-		header h1 .the { font-size: 21px; position: absolute; top: -20px; left: -28px; border-radius: 50%; height: 38px; width: 38px; overflow: hidden; color: #fff; background: #8a8a8a; text-align: center; line-height: 44px; text-shadow: none; }
-		header h1 em {position: relative; top: -23px; left: 285px; font-size: 121px; color: #983C5F; padding-right: 40px; }
-		header h1 .of { font-size: 46px; position: relative; left: -150px; top: 40px; text-shadow: none; color: #555 }
+		header h1 { font: 92px/82px bello-pro, sans-serif; color: #e1b12b; -webkit-transform:rotate(-12deg); height: 150px; margin-top: 20px;  text-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,0.3); -webkit-transition: 0.5s all ease-in; }
+		header h1 span, header h1 em { color: #fff; -webkit-transition: 0.5s all ease-in; }
+		header h1 .the { font-size: 21px; position: absolute; top: -20px; left: -28px; border-radius: 50%; height: 38px; width: 38px; overflow: hidden; color: #fff; background: #8a8a8a; text-align: center; line-height: 44px; text-shadow: none; -webkit-transition: 0.5s all ease-in; }
+		header h1 em {position: relative; top: -23px; left: 285px; font-size: 121px; color: #983C5F; padding-right: 40px; -webkit-transition: 0.5s all ease-in; }
+		header h1 .of { font-size: 46px; position: relative; left: -150px; top: 40px; text-shadow: none; color: #555; -webkit-transition: 0.5s all ease-in; }
 		
-		.zoom header h1, .zoom header * { color: #555; text-shadow: -1px -1px 0 #000 !important; }
-		.zoom header h1 span.the { color: #000 !important; background: #555; text-shadow: none !important; }
+		.zoom header h1, .zoom header * { color: #555; text-shadow: -1px -1px 0 #000 !important; -webkit-transition: 0.5s all ease-in; }
+		.zoom header h1 span.the { color: #000 !important; background: #555; text-shadow: none !important; -webkit-transition: 0.5s all ease-in; }
 		
 		#container .content { text-align: center; }
 		
 		form label { display: none; }
-		form input { background: none; border: none; border-bottom: 1px dashed #444; font-size: 22px; padding: 0 3px 7px 3px; color: #000; display: inline; text-align: center; font-family: Brevia, sans-serif; }
-		form input:-webkit-input-placeholder, form input:-moz-input-placeholder { color: #555; border-bottom-color: #fff; }
+		form input { background: #fff; border: none; border-bottom: 1px dashed #ccc; font-size: 22px; padding: 0 3px 3px 3px; color: #000; display: inline; text-align: center; font-family: Brevia, sans-serif; }
+		
+		form input::-webkit-input-placeholder { color: #777; }
+		form input:-moz-placeholder { color: #777; }
 		
 		form button { display: block; background: #983C5F; color: #fff; border-radius: 50%; font-size: 22px; border: none; font-family: Bello-Pro, sans-serif; font-weight: 400; height: 65px; width: 65px; line-height: 21px; text-align: center; margin: 30px auto 20px;  -webkit-transition: all ease-out 0.7s; }
 		
@@ -85,8 +87,8 @@
 		#rest { height: 0; width: 160px; border-bottom: 220px solid #111; border-left: 30px solid transparent; border-right: 30px solid transparent; margin-top: -44px; }
 		
 		#coverart { position: relative; }
-		#coverart img { box-shadow: 0 0 9px rgba(0,0,0,0.2); }
-		#medium { background: url(images/cd-lg.png) scroll no-repeat 50% 50%; position: relative; width: 345px; height: 345px;  -webkit-transition: 0.75s all ease-in; position: absolute; z-index: -1; }
+		#coverart img { box-shadow: 0 0 9px rgba(255,255,255,0.2); }
+		#medium { background: url(images/record-lg.png) scroll no-repeat 50% 50%; position: relative; width: 345px; height: 345px;  -webkit-transition: 0.75s all ease-in; position: absolute; z-index: -1; }
 		.reveal #medium { left: 190px; -webkit-transform: rotate(65deg); -webkit-transition: 1.5s all ease-out;  }
 		
 		#results #metadata { width: 400px; margin-left: 510px; padding-top: 70px; color: #fff; }
@@ -154,12 +156,12 @@ $(function () {
 	<div id="api"></div>
 <div id="coverart">
   <div id="medium"></div>
-  <img id="art" src="http://cdn.7static.com/static/img/sleeveart/00/002/832/0000283270_350.jpg" height="350" width="350" style="float:left;margin-right:20px;">
+  <img id="art" src="http://cdn.7static.com/static/img/sleeveart/00/003/043/0000304394_350.jpg" height="350" width="350" style="float:left;margin-right:20px;">
 </div>
   <div id="metadata">
-    <div id="track-wrapper"><span id="track">Gentle Thoughts</span></div>
- 	<div class="artist-wrapper">by <span id="artist">Herbie Hancock</span></div>
-    <div><b>Album: </b><span id="album">Secrets</span></div>
+    <div id="track-wrapper"><span id="track">Can't Get Any Harder</span></div>
+ 	<div class="artist-wrapper">by <span id="artist">James Brown</span></div>
+    <div><b>Album: </b><span id="album">Universal Brown</span></div>
     <div>
       <button id="previous">&lt;&lt;</button>
       <button id="play">|&gt;</button>
