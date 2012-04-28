@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Music Hack Day</title>
@@ -187,10 +188,10 @@
 		<label for="day">Day</label>
 		<input type="text" id="day" size="3" placeholder="day" />
 		
-		<label for="day">Month</label>
-		<input type="text" id="month" size="12" placeholder="month" />
+		<label for="month">Month</label>
+		<input type="date" id="month" size="12" placeholder="month" />
 		
-		<label for="day">Year</label>
+		<label for="year">Year</label>
 		<input type="text" id="year" size="4" placeholder="year" />
 		
 		<button type="submit" id="playit">Play it!</button>
