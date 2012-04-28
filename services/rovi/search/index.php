@@ -4,17 +4,21 @@ require("../rovi.php");
 
 $myRovi = new Rovi($ROVI['apikey'], $ROVI["sharedsecret"]);
 
-$date = "19950101";
+$from = "19950101";
+$to = "19960101";
 
-if (isset($_GET["date"] )) {
-   $date = $_GET["date"];	
+if (isset($_GET["from"] )) {
+   $from = htmlspecialchars($_GET["from"]);	
 } 
 
+if (isset($_GET["to"] )) {
+   $to = htmlspecialchars($_GET["to"]);	
+}
+
 if (isset($_GET["callback"])) {
-	echo $_GET["callback"] . "(" . $myRovi->datesearch($date) . ")";
+	echo $_GET["callback"] . "(" . $myRovi->datesearch($from, $to) . ")";
 } else {
-	"hi there";
-	echo $myRovi->datesearch($date);
+	echo $myRovi->datesearch($from, $to);
 }
 	
 

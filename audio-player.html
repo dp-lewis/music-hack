@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>Music Hack Day</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>	
+	<script type="text/javascript">
+
+  </script>
+	
+	
+</head>
+<body>
+
+
+
+
+
+	
+	
+<script>
+
+function getMP3(id) {
+	$.ajax({
+		url: 'http://www.hackdays.com/2012-sydney-music-hack-day/services/7digital/mp3/?id=' + id + '&callback=?',
+		dataType: 'jsonp',
+		success : function (data) {
+			console.log('mp3', id);
+			$('body').append('<audio src="' + data.response.url + '" controls="controls"></audio>');
+
+		}	
+	});	
+}
+
+function getTracks(id) {
+	$.ajax({
+		url: 'http://www.hackdays.com/2012-sydney-music-hack-day/services/7digital/tracks/?id=' + id + '&callback=?',
+		dataType: 'jsonp',
+		success : function (data) {
+			console.log('tracks', data);
+             getMP3(data.response.tracks.track[0]['@attributes'].id);			
+
+		}	
+	});	
+	
+	
+}
+
+$.ajax({
+	url: 'http://www.hackdays.com/2012-sydney-music-hack-day/services/7digital/search/?date=19760527&callback=?',
+	dataType: 'jsonp',
+	success : function (data) {
+		console.log('search', data);
+		var img = data.response.releases.release[0].image.replace("_50", "_350");
+		$('body').append('<img src="' + img + '" />');
+		getTracks(data.response.releases.release[0]['@attributes'].id);
+	}	
+});
+
+
+
+</script>	
+	
+
+</body>
+</html>

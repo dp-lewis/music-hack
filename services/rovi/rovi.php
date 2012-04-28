@@ -38,7 +38,7 @@ Perform the calculation at the time of each request to be sure it's within a fiv
           return $url;
 	  }
 	
-	  public function datesearch($end) {
+	  public function datesearch($start, $end) {
 		/*
 		Romantic XA0000000758
 		Sensual: XA0000000764
@@ -60,20 +60,32 @@ Perform the calculation at the time of each request to be sure it's within a fiv
 		    // $url .= "|moodid:XA0000001018";
 		    // $url .= "|moodid:XA0000000722";
 		
-		  // $url .= "&filter=themeid:MA0000005076";
+		  //$url .= "&filter=themeid:MA0000005076";
 		
-		   $url .= "&filter=genreid:MA0000002567"; // easy listening
+		   // genre
+		
+		// blues MA0000002467
+		
+		  // $url .= "&filter=genreid:MA0000002567"; // easy listening
+	     //  $url .= "|genreid:MA0000002467";	// blues
+	      // $url .= "|genreid:MA0000002592";// folk
+		
+		//subgenreid:
+		  //  $url .= "|subgenreid:MA0000012141";	// country folk
+		   
 											
 		   $url .= "&entitytype=song";
 		   $url .= "&format=json";
-		   //$url .= "&filter=releasedate>:" . $start;
+		   $url .= "&filter=releasedate>:" . $start;
 		   $url .= "&filter=releasedate<:" . $end;
 		   $url .= "&size=10";
 		
 		   $cachefile = "../../cache/" . md5($url) . ".js";
 		
 		   $url = $this->searchurl() . $url;
-		//echo $url;
+		
+
+	//	echo $url;
 
 		   // check if this has been retrieved before
 		   if (file_exists($cachefile)) {
