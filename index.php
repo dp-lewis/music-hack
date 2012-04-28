@@ -170,6 +170,13 @@
 		#results #track-wrapper { font-family: Bello-Pro; font-size: 32px; line-height: 32px; width: 100%; color: #e1b12b; }
 		#results #album { font-style: italics; }
 		
+		#logos { width: 200px;  height: 50px; position: absolute; bottom: 0; right: 5%; }
+		#logos li { list-style: none; margin: 0; padding: 0; display: inline; }
+		
+		#resetlink { color: #fff;  }
+		
+		
+		
 	</style>
 	
 </head>
@@ -226,13 +233,17 @@
       <button id="pause">||</button>
       <button id="next">&gt;&gt;</button>
     </div>
+	<p id="reset"><a href="index.php" id="resetlink">Start again?</a></p>
   </div>
 </div>
 	
 </div>
 	
-	
-	
+<ul id="logos">
+<li><a href="http://www.rovicorp.com/" id="rovi">Powered by Rovi</a></li>
+<li><a href="http://www.rdio.com/" id="rdio">Streaming by Rdio</a></li>
+</ul>	
+
 </div>
 
 </div>
