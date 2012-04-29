@@ -39,9 +39,9 @@
 		form button:hover, #results a.resetlink:hover { background: #000; -webkit-transition: all ease-in 0.2s; }
 		#results a.resetlink:hover { background-color: #e1b12b; }
 		
-		#intro { margin-left: 40%; opacity:1; -webkit-transition: all ease-in 0.4s; }
-		.zoom #intro { display: none; opacity: 0;  -webkit-transition: all ease-in 0.4s;  }
-		.loading #intro { opacity: 0;  -webkit-transition: all ease-in 0.2s; }
+		#intro { margin-left: 40%; display: block; opacity:1; -webkit-transition: opacity ease-in 0.5s; }
+		.zoom #intro { display: none; opacity: 0;  -webkit-transition: opacity ease-in 1s;  }
+		.loading #intro { opacity: 0;  -webkit-transition: opacity ease-out 0.2s; }
 		
 		#loading { display: none; opacity: 0;  -webkit-transition: all ease-in 0.4s; margin-top: -120px; margin-left: 40%; color: #777; }
 		#loading .resetlink { color: #666; }
