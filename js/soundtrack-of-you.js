@@ -207,10 +207,10 @@ $(document).ready(function() {
 		return false;
     });
 
-    $('#resetlink').bind('click', function (ev) {
+    $('.resetlink').bind('click', function (ev) {
 	    ev.preventDefault();
 
-        $('body').removeClass("zoom").removeClass("reveal");	
+        $('body').removeClass("zoom").removeClass("reveal").removeClass("loading");	
 	
 		fadeOut(function () {
 		    $('#api').rdio().pause();		
