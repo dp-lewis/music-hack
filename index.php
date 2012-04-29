@@ -44,7 +44,7 @@
 		form button:hover, #results a.resetlink:hover { background: #000; -webkit-transition: all ease-in 0.2s; }
 		#results a.resetlink:hover { background-color: #e1b12b; }
 		
-		#intro { margin-left: 40%; display: block; opacity:1; -webkit-transition: opacity ease-in 0.5s; }
+		#intro { margin-left: 40%; display: block; opacity:1; -webkit-transition: all ease-in 0.5s; z-index: -10; }
 		.zoom #intro { display: none; opacity: 0;  -webkit-transition: opacity ease-in 1s;  }
 		.loading #intro { opacity: 0;  -webkit-transition: opacity ease-out 0.2s; }
 		
