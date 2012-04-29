@@ -69,11 +69,11 @@
 		#results #track-wrapper { font-family: Bello-Pro; font-size: 32px; line-height: 32px; width: 100%; color: #e1b12b; }
 		#results #album { font-style: italics; }
 		
-		#logos { width: 200px;  height: 30px; position: absolute; bottom: 10px; right: 5%; margin: 0; padding: 0; opacity: 0.7; }
-		#logos:hover { opacity: 1; }
+		#logos { width: 240px;  height: 30px; position: absolute; bottom: 10px; right: 5%; margin: 0; padding: 0; opacity: 0.7; -webkit-transition: 0.7s opacity ease-in; }
+		#logos:hover { opacity: 1; -webkit-transition: 0.3s opacity ease-out; }
 		#logos li { list-style: none; margin: 0; padding: 0; display: inline; }
-		#logos a#rovi { text-indent: -1000em; background: url(images/rovi-grey.png) scroll no-repeat 0 0; width: 123px; height: 30px; overflow: hidden; display: inline-block; }
-		#logos a#rdio { text-indent: -1000em; background: url(images/rdio-grey.png) scroll no-repeat 0 0; width: 63px; height: 30px; overflow: hidden; display: inline-block; }
+		#logos a#rovi { text-indent: -1000em; background: url(images/rovi-grey.png) scroll no-repeat 0 0; width: 99px; height: 30px; overflow: hidden; display: inline-block; }
+		#logos a#rdio { text-indent: -1000em; background: url(images/rdio-grey.png) scroll no-repeat 0 0; width: 93px; height: 30px; overflow: hidden; display: inline-block; }
 		
 		.resetlink { color: #fff;  }
 		
