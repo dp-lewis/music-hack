@@ -32,16 +32,21 @@
 		form input::-webkit-input-placeholder { color: #777; }
 		form input:-moz-placeholder { color: #777; }
 		
-		form button, a#resetlink { display: block; background: #983C5F; color: #fff; border-radius: 50%; font-size: 22px; border: none; font-family: Bello-Pro, sans-serif; font-weight: 400; height: 65px; width: 65px; line-height: 21px; text-align: center; margin: 30px auto 20px;  -webkit-transition: all ease-out 0.7s; }
+		form button, #results a.resetlink { display: block; background: #983C5F; color: #fff; border-radius: 50%; font-size: 22px; border: none; font-family: Bello-Pro, sans-serif; font-weight: 400; height: 65px; width: 65px; line-height: 21px; text-align: center; margin: 30px auto 20px;  -webkit-transition: all ease-out 0.7s; }
 		
-		a#resetlink { padding-top: 15px; height: 61px; width: 76px; text-decoration: none;}
+		#results a.resetlink { padding-top: 15px; height: 61px; width: 76px; text-decoration: none;}
 		
-		form button:hover, a#resetlink:hover { background: #000; -webkit-transition: all ease-in 0.2s; }
-		a#resetlink:hover { background-color: #e1b12b; }
+		form button:hover, #results a.resetlink:hover { background: #000; -webkit-transition: all ease-in 0.2s; }
+		#results a.resetlink:hover { background-color: #e1b12b; }
 		
-		#intro { margin-left: 40%; }
-		.zoom #intro { display: none; }
+		#intro { margin-left: 40%; opacity:1; -webkit-transition: all ease-in 0.4s; }
+		.zoom #intro { display: none; opacity: 0;  -webkit-transition: all ease-in 0.4s;  }
+		.loading #intro { opacity: 0;  -webkit-transition: all ease-in 0.2s; }
 		
+		#loading { display: none; opacity: 0;  -webkit-transition: all ease-in 0.4s; margin-top: -120px; margin-left: 40%; color: #777; }
+		#loading .resetlink { color: #666; }
+		.loading #loading { display: block; opacity: 1;  -webkit-transition: all ease-in 0.8s; }
+		#zoom #loading { display: none; opacity: 0;  -webkit-transition: all ease-in 0.4s; }
 		
 		#results { display: block; width: 1px; height: 1px; overflow: hidden; color: #fff; opacity: 0; -webkit-transition: 3s opacity ease-in; color: #222; }
 		.zoom #results { display: width: auto; height: auto; overflow: visible; opacity: 1; -webkit-transition: 3s opacity ease-out; }
@@ -70,7 +75,7 @@
 		#logos a#rovi { text-indent: -1000em; background: url(images/rovi-grey.png) scroll no-repeat 0 0; width: 123px; height: 30px; overflow: hidden; display: inline-block; }
 		#logos a#rdio { text-indent: -1000em; background: url(images/rdio-grey.png) scroll no-repeat 0 0; width: 63px; height: 30px; overflow: hidden; display: inline-block; }
 		
-		#resetlink { color: #fff;  }
+		.resetlink { color: #fff;  }
 		
 		#audio-controls button {  background: transparent; border: none; text-indent: -1000em; overflow: hidden;  }
 		#audio-controls #play { width: 25px; height: 25px; background: url(images/controls.png) scroll no-repeat 8px 5px; opacity: 0.6; }
@@ -98,15 +103,16 @@
 		<input type="text" id="day" size="3" placeholder="day" />
 		
 		<label for="month">Month</label>
-		<input type="date" id="month" size="4" placeholder="month" />
+		<input type="date" id="month" size="6" placeholder="month" />
 		
 		<label for="year">Year</label>
 		<input type="text" id="year" size="4" placeholder="year" />
 		
-		<button type="submit" id="playit">Play it!</button>
+		<button type="submit" id="playit">Look in</button>
 	</form>
 </div>
 
+<div class="content" id="loading"><p>shhhhh! we're sneaking in.</p><p><a href="index.php" class="resetlink">Start again?</a></p></div>
 
 
 <div id="keyhole">
@@ -135,7 +141,7 @@
       <button id="pause">||</button>
       <button id="next">&gt;&gt;</button>
     </div>
-	<p id="reset"><a href="index.php" id="resetlink">Start again?</a></p>
+	<p id="reset"><a href="index.php" class="resetlink">Start again?</a></p>
   </div>
 </div>
 	
