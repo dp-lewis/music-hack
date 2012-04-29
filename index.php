@@ -49,7 +49,7 @@
 		#rdio-playback #track { text-style: italic; font-weight: 400; }
 		#rdio-playback button { display: none; }
 
-		#keyhole { -webkit-transform: scale(0.9); position: absolute; top: 15%; left: 21%; -webkit-transition: ease-in -0.8s; z-index: -1; }
+		#keyhole { -webkit-transform: scale(0.9); position: absolute; top: 15%; left: 21%; -webkit-transition: ease-out 0.8s; z-index: -1; }
 		.zoom #keyhole { top: 0; left: 25%; -webkit-transform: scale(25); -webkit-transition: ease-in 1.8s;  }
 		#circle { width: 220px; border-radius: 220px; background: #111; height: 220px; }
 		#rest { height: 0; width: 160px; border-bottom: 220px solid #111; border-left: 30px solid transparent; border-right: 30px solid transparent; margin-top: -44px; }
@@ -72,8 +72,8 @@
 		
 		#resetlink { color: #fff;  }
 		
-		#audio-controls button {  background: transparent; border: none; text-indent: -1000em; overflow: hidden; border: 1px solid gold;  }
-		#audio-controls #play { width: 25px; height: 25px; background: url(images/controls.png) scroll no-repeat 10px 5px; opacity: 0.6; }
+		#audio-controls button {  background: transparent; border: none; text-indent: -1000em; overflow: hidden;  }
+		#audio-controls #play { width: 25px; height: 25px; background: url(images/controls.png) scroll no-repeat 8px 5px; opacity: 0.6; }
 		#audio-controls #play:hover { opacity: 1; }
 		
 		#audio-controls #pause { width: 25px; height: 25px; background: url(images/controls.png) scroll no-repeat -20px 5px; opacity: 0.6; }
@@ -98,7 +98,7 @@
 		<input type="text" id="day" size="3" placeholder="day" />
 		
 		<label for="month">Month</label>
-		<input type="date" id="month" size="12" placeholder="month" />
+		<input type="date" id="month" size="4" placeholder="month" />
 		
 		<label for="year">Year</label>
 		<input type="text" id="year" size="4" placeholder="year" />
