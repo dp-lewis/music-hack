@@ -46,6 +46,7 @@ function getTunesOfYou(from, to, success) {
 	          $('#track').text(playingTrack.name);
 	          $('#album').text(playingTrack.album);
 	          $('#artist').text(playingTrack.artist);
+	 $('#api').rdio().setVolume(1);
 	        }
 	        });
 	      $('#api').bind('positionChanged.rdio', function(e, position) {
@@ -147,10 +148,7 @@ function fadeOut(success) {
 	        $('#api').rdio().setVolume(current);	
 	        setTimeout(fade, 100);				
 		}
-		
-		
-	}
-	
+	}	
 	fade();
 }
 
@@ -162,11 +160,11 @@ $(document).ready(function() {
 	
 	    dateto.day = convertDay($('#day').val());
 	    dateto.month = convertMonth($('#month').val());
-	    dateto.year = $('#year').val();
+	    dateto.year = $('#year').val() - 1;
 	
 	    datefrom.day = convertDay($('#day').val());
 	    datefrom.month = convertMonth($('#month').val());
-	    datefrom.year = $('#year').val() - 1;		
+	    datefrom.year = $('#year').val() - 2;
 		
 		getTunesOfYou(datefrom, dateto, function () {
 		    $('body').addClass("zoom").addClass("reveal");
@@ -186,7 +184,7 @@ $(document).ready(function() {
 		});
 		
 	    return false;
-    })
+    });
 
 
 
