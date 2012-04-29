@@ -1,12 +1,15 @@
 var duration = 1; // track the duration of the currently playing track
 
+var state = {};
 
+
+state.uses = 0;
 
 function getTunesOfYou(from, to, success) {
-    var state = {};
 
-    state.imageloaded = false;
-    state.playbackstarted = false;
+	state.imageloaded = false;
+	state.playbackstarted = false;
+	state.volume = 1;
 
     function readytoshow() {
 	    if (state.imageloaded === true && state.playbackstarted === true) {
@@ -16,11 +19,19 @@ function getTunesOfYou(from, to, success) {
 			
 	function setupPlayer(id) {	
 
-		
-		
+		if (state.uses === 0) {
 	      $('#api').bind('ready.rdio', function() {
 	        $(this).rdio().play(id);
-	      });
+	      });			
+			
+		} else {
+		   $('#api').rdio().play(id);	
+		}
+		
+
+	
+	      state.uses = state.uses + 1;
+	
 	      $('#api').bind('playingTrackChanged.rdio', function(e, playingTrack, sourcePosition) {
 	        if (playingTrack) {
 	          duration = playingTrack.duration;
@@ -41,7 +52,7 @@ function getTunesOfYou(from, to, success) {
 	        $('#position').css('width', Math.floor(100*position/duration)+'%');
 	      });
 	      $('#api').bind('playStateChanged.rdio', function(e, playState) {
-		     state.playbackstarted = true;
+
 		
 	        if (playState == 0) { // paused
 	          $('#play').show();
@@ -49,8 +60,10 @@ function getTunesOfYou(from, to, success) {
 	        } else {
 	          $('#play').hide();
 	          $('#pause').show();
+		     state.playbackstarted = true;	
+			        readytoshow();
 	        }
-	        readytoshow();
+
 	        	      
 	
 	      });
@@ -124,6 +137,24 @@ function convertDay(day) {
 	return day + '';
 }
 
+function fadeOut(success) {
+	var fade, current = state.volume;
+	fade = function() {
+		if (current < 0) {
+			success();
+		} else {	
+			current = current - 0.1;
+	        $('#api').rdio().setVolume(current);	
+	        setTimeout(fade, 100);				
+		}
+		
+		
+	}
+	
+	fade();
+}
+
+
 $(document).ready(function() {
     $('#playit').bind('click', function (ev) {
 	    ev.preventDefault();
@@ -146,7 +177,14 @@ $(document).ready(function() {
 
     $('#resetlink').bind('click', function (ev) {
 	    ev.preventDefault();
-	    $('body').removeClass("zoom").removeClass("reveal");
+
+        $('body').removeClass("zoom").removeClass("reveal");	
+	
+		fadeOut(function () {
+		    $('#api').rdio().pause();		
+		
+		});
+		
 	    return false;
     })
 
