@@ -85,18 +85,18 @@ Perform the calculation at the time of each request to be sure it's within a fiv
 		   $url = $this->searchurl() . $url;
 		
 
-		echo $url;
+
 
 		   // check if this has been retrieved before
-		   if (file_exists($cachefile)) {
+/*		   if (file_exists($cachefile)) {
 			   return file_get_contents($cachefile);
-		   } else {
+		   } else {*/
 		       $content = file_get_contents($url);
 			   $fh = fopen($cachefile, 'w') or die("can't open file");
 			   fwrite($fh, $content);
 			   fclose($fh);	
 			   return $content;
-		   }
+/*		   }*/
 		
 
 	  }
