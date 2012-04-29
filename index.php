@@ -2,6 +2,11 @@
 <html>
 <head>
 	<title>Music Hack Day</title>
+	<meta property="og:title" content="Soundtrack to you" />
+    <meta property="og:image" content="images/thumbnail.jpg" />
+	<meta property="og:description" content="Dare you find out what your parents were listening to when they made you?" />
+	
+		
 	<script type="text/javascript" src="http://use.typekit.com/fgf3xxn.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	

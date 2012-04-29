@@ -56,14 +56,26 @@ function getTunesOfYou(from, to, success) {
 	      state.uses = state.uses + 1;
 	
 	      $('#api').bind('playingTrackChanged.rdio', function(e, playingTrack, sourcePosition) {
+		
+		     // 
+		     var timer = setTimeout(function () {
+		          state.imageloaded = true;
+		          readytoshow();			 
+			
+		     }, 2000);
+
+		
+
 	        if (playingTrack) {
 	          duration = playingTrack.duration;
 	console.log(playingTrack);
 	          $('#art').attr('src', playingTrack.icon);
 	
 	          $('#art').bind('load', function () {
+		          clearTimeout(timer);		
 		          state.imageloaded = true;
 		          readytoshow();
+
 		
 	          });
 	          $('#track').text(playingTrack.name);
@@ -217,6 +229,9 @@ $(document).ready(function() {
 	
 	
     $('#playit').bind('click', function (ev) {
+	    if (state.uses > 0) {
+			    $('#api').rdio().pause();
+		}	
 	    $('body').addClass('loading');
 	    ev.preventDefault();
 	    var dateto = {}, datefrom = {};
@@ -227,8 +242,17 @@ $(document).ready(function() {
 	    console.log(dateto);
 	
 	    datefrom.day = dateto.day;
-	    datefrom.month = dateto.month;
-	    datefrom.year = dateto.year - 1;
+	    datefrom.month = dateto.month - 6;
+	    datefrom.year = dateto.year;
+		
+	    if (datefrom.month < 1) {
+		    datefrom.month = 12 + datefrom.month;
+	        datefrom.year = dateto.year - 1;		
+	    }
+
+	    if (datefrom.month < 10) {
+		    datefrom.month = '0' + datefrom.month;
+	    }
 		
 		getTunesOfYou(datefrom, dateto, function () {		
 		    $('body').removeClass('loading').addClass("zoom").addClass("reveal");
@@ -239,6 +263,8 @@ $(document).ready(function() {
 
     $('.resetlink').bind('click', function (ev) {
 	    ev.preventDefault();
+	
+	    $('body').removeClass('loading')
 
         $('body').removeClass("zoom").removeClass("reveal").removeClass("loading");	
 	

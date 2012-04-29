@@ -76,8 +76,8 @@ Perform the calculation at the time of each request to be sure it's within a fiv
 											
 		   $url .= "&entitytype=song";
 		   $url .= "&format=json";
-		   $url .= "&filter=releasedate>:" . $start;
-		   $url .= "&filter=releasedate<:" . $end;
+		   $url .= "&filter=releasedate>" . $start;
+		   $url .= "&filter=releasedate<" . $end;
 		   $url .= "&size=10";
 		
 		   $cachefile = "../../cache/" . md5($url) . ".js";
@@ -85,7 +85,7 @@ Perform the calculation at the time of each request to be sure it's within a fiv
 		   $url = $this->searchurl() . $url;
 		
 
-	//	echo $url;
+		echo $url;
 
 		   // check if this has been retrieved before
 		   if (file_exists($cachefile)) {
