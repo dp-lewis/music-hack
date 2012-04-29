@@ -1,10 +1,33 @@
 var duration = 1; // track the duration of the currently playing track
 
 var state = {};
-
-
+var defaults = {};
 state.uses = 0;
 
+// there might be some defaults coming through from 
+function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+  var regexS = "[\\?&]" + name + "=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.search);
+  if(results == null)
+    return undefined;
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+defaults.day = getParameterByName('day');
+defaults.month = getParameterByName('month');
+defaults.year = getParameterByName('year');
+
+
+// be warned, this function may make you feel nausious when viewed in the browser
+// what has been seen, cannot be unseen
 function getTunesOfYou(from, to, success) {
 
 	state.imageloaded = false;
@@ -154,6 +177,16 @@ function fadeOut(success) {
 
 
 $(document).ready(function() {
+	
+	// pre populate form if we have everything we need
+	if (defaults.day && defaults.month && defaults.year) {
+	    $('#day').val(defaults.day);
+	    $('#month').val(toTitleCase(defaults.month));
+	    $('#year').val(defaults.year);		
+		
+	}
+	
+	
     $('#playit').bind('click', function (ev) {
 	    $('body').addClass('loading');
 	    ev.preventDefault();
