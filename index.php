@@ -34,7 +34,7 @@
 		
 		form button, a#resetlink { display: block; background: #983C5F; color: #fff; border-radius: 50%; font-size: 22px; border: none; font-family: Bello-Pro, sans-serif; font-weight: 400; height: 65px; width: 65px; line-height: 21px; text-align: center; margin: 30px auto 20px;  -webkit-transition: all ease-out 0.7s; }
 		
-		a#resetlink { padding-top: 10px; height: 56px; text-decoration: none;}
+		a#resetlink { padding-top: 15px; height: 61px; width: 76px; text-decoration: none;}
 		
 		form button:hover, a#resetlink:hover { background: #000; -webkit-transition: all ease-in 0.2s; }
 		a#resetlink:hover { background-color: #e1b12b; }
@@ -49,7 +49,7 @@
 		#rdio-playback #track { text-style: italic; font-weight: 400; }
 		#rdio-playback button { display: none; }
 
-		#keyhole { -webkit-transform: scale(0.9); position: absolute; top: 15%; left: 21%; -webkit-transition: ease-in 2s; z-index: -1; }
+		#keyhole { -webkit-transform: scale(0.9); position: absolute; top: 15%; left: 21%; -webkit-transition: ease-in -0.8s; z-index: -1; }
 		.zoom #keyhole { top: 0; left: 25%; -webkit-transform: scale(25); -webkit-transition: ease-in 1.8s;  }
 		#circle { width: 220px; border-radius: 220px; background: #111; height: 220px; }
 		#rest { height: 0; width: 160px; border-bottom: 220px solid #111; border-left: 30px solid transparent; border-right: 30px solid transparent; margin-top: -44px; }
@@ -72,7 +72,12 @@
 		
 		#resetlink { color: #fff;  }
 		
+		#audio-controls button {  background: transparent; border: none; text-indent: -1000em; overflow: hidden; border: 1px solid gold;  }
+		#audio-controls #play { width: 25px; height: 25px; background: url(images/controls.png) scroll no-repeat 10px 5px; opacity: 0.6; }
+		#audio-controls #play:hover { opacity: 1; }
 		
+		#audio-controls #pause { width: 25px; height: 25px; background: url(images/controls.png) scroll no-repeat -20px 5px; opacity: 0.6; }
+		#audio-controls #pause:hover { opacity: 1; }
 		
 	</style>
 	
@@ -124,7 +129,7 @@
     <div id="track-wrapper"><span id="track"></span></div>
  	<div class="artist-wrapper">by <span id="artist"></span></div>
     <div><b>Album: </b><span id="album"></span></div>
-    <div>
+    <div id="audio-controls">
       <button id="previous">&lt;&lt;</button>
       <button id="play">|&gt;</button>
       <button id="pause">||</button>
