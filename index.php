@@ -27,10 +27,10 @@
 		#container .content { text-align: center; }
 		
 		form label { display: none; }
-		form input { background: #fff; border: none; border-bottom: 1px dashed #ccc; font-size: 22px; padding: 0 3px 3px 3px; color: #000; display: inline; text-align: center; font-family: Brevia, sans-serif; }
+		form input { background: #fff; border: none; border-bottom: 1px dashed #ccc; font-size: 22px; line-height: 22px; padding: 0 3px 3px 3px; color: #000; display: inline; text-align: center; font-family: Brevia, sans-serif; }
 		
-		form input::-webkit-input-placeholder { color: #777; }
-		form input:-moz-placeholder { color: #777; }
+		form input::-webkit-input-placeholder { color: #999; font-size: 17px; line-height: 22px; }
+		form input:-moz-placeholder { color: #999; }
 		
 		form button, #results a.resetlink { display: block; background: #983C5F; color: #fff; border-radius: 50%; font-size: 22px; border: none; font-family: Bello-Pro, sans-serif; font-weight: 400; height: 65px; width: 65px; line-height: 21px; text-align: center; margin: 30px auto 20px;  -webkit-transition: all ease-out 0.7s; }
 		
@@ -57,6 +57,8 @@
 		#keyhole { -webkit-transform: scale(0.9); position: absolute; top: 15%; left: 21%; -webkit-transition: ease-out 0.8s; z-index: -1; }
 		.zoom #keyhole { top: 0; left: 25%; -webkit-transform: scale(25); -webkit-transition: ease-in 1.8s;  }
 		#circle { width: 220px; border-radius: 220px; background: #111; height: 220px; }
+		.loading #circle {background: #000 url(images/eye.png) scroll no-repeat 50% 50%; -webkit-transition: 1s all ease-out; }
+		.zoom #circle { background-image: none; -webkit-transition: 1s opacity ease-out; }
 		#rest { height: 0; width: 160px; border-bottom: 220px solid #111; border-left: 30px solid transparent; border-right: 30px solid transparent; margin-top: -44px; }
 		
 		#coverart { position: relative; }
