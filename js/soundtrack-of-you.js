@@ -3,8 +3,21 @@ var duration = 1; // track the duration of the currently playing track
 
 
 function getTunesOfYou(from, to, success) {
-	
+    var state = {};
+
+    state.imageloaded = false;
+    state.playbackstarted = false;
+
+    function readytoshow() {
+	    if (state.imageloaded === true && state.playbackstarted === true) {
+		    success();		
+	    }
+    }
+			
 	function setupPlayer(id) {	
+
+		
+		
 	      $('#api').bind('ready.rdio', function() {
 	        $(this).rdio().play(id);
 	      });
@@ -13,6 +26,12 @@ function getTunesOfYou(from, to, success) {
 	          duration = playingTrack.duration;
 	console.log(playingTrack);
 	          $('#art').attr('src', playingTrack.icon);
+	
+	          $('#art').bind('load', function () {
+		          state.imageloaded = true;
+		          readytoshow();
+		
+	          });
 	          $('#track').text(playingTrack.name);
 	          $('#album').text(playingTrack.album);
 	          $('#artist').text(playingTrack.artist);
@@ -22,6 +41,8 @@ function getTunesOfYou(from, to, success) {
 	        $('#position').css('width', Math.floor(100*position/duration)+'%');
 	      });
 	      $('#api').bind('playStateChanged.rdio', function(e, playState) {
+		     state.playbackstarted = true;
+		
 	        if (playState == 0) { // paused
 	          $('#play').show();
 	          $('#pause').hide();
@@ -29,6 +50,9 @@ function getTunesOfYou(from, to, success) {
 	          $('#play').hide();
 	          $('#pause').show();
 	        }
+	        readytoshow();
+	        	      
+	
 	      });
 	      // this is a valid playback token for localhost.
 	      // but you should go get your own for your own domain.
@@ -40,7 +64,7 @@ function getTunesOfYou(from, to, success) {
 	      $('#next').click(function() { $('#api').rdio().next(); });
 	
 	
-	      success();
+
 	};
 
 	function getTitle(title, artist) {
