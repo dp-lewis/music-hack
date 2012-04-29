@@ -217,6 +217,9 @@ $(document).ready(function() {
 	
 	
     $('#playit').bind('click', function (ev) {
+	    if (state.uses > 0) {
+			    $('#api').rdio().pause();
+		}	
 	    $('body').addClass('loading');
 	    ev.preventDefault();
 	    var dateto = {}, datefrom = {};
@@ -239,6 +242,8 @@ $(document).ready(function() {
 
     $('.resetlink').bind('click', function (ev) {
 	    ev.preventDefault();
+	
+	    $('body').removeClass('loading')
 
         $('body').removeClass("zoom").removeClass("reveal").removeClass("loading");	
 	
