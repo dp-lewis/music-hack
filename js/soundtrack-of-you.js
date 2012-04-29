@@ -146,12 +146,8 @@ function convertMonth(month) {
     }
 
     monthnumber = i + 1 ;
-
-    if (monthnumber < 10) {
-	    monthnumber = '0' + monthnumber;
-    }
 	
-	return monthnumber + '';
+	return monthnumber;
 }
 
 function convertDay(day) {
@@ -175,6 +171,39 @@ function fadeOut(success) {
 	fade();
 }
 
+// takes the date submitted by the user and winds it back by 9 months (ish)
+function windbackclock(day, month, year) {
+    var wildnight = {};
+
+
+    // month - 9
+    wildnight.month = parseInt(month) - 9;
+
+console.log('month',month - 9);
+
+    wildnight.day = day;
+
+    // if it's less than 1 then set year back by 1
+    if (wildnight.month < 1) {
+	   wildnight.year = year - 1;
+	   wildnight.month = 12 + wildnight.month;
+    } else {
+	   wildnight.year = year;
+    }
+
+    wildnight.day = convertDay(wildnight.day);
+    wildnight.month = wildnight.month;
+
+    if (wildnight.month < 10) {
+	    wildnight.month = '0' + wildnight.month;
+    }
+
+    console.log(wildnight);
+	
+    return wildnight;	
+	
+}
+
 
 $(document).ready(function() {
 	
@@ -192,13 +221,14 @@ $(document).ready(function() {
 	    ev.preventDefault();
 	    var dateto = {}, datefrom = {};
 	
-	    dateto.day = convertDay($('#day').val());
-	    dateto.month = convertMonth($('#month').val());
-	    dateto.year = $('#year').val() - 1;
 	
-	    datefrom.day = convertDay($('#day').val());
-	    datefrom.month = convertMonth($('#month').val());
-	    datefrom.year = $('#year').val() - 2;
+	    dateto = windbackclock($('#day').val(), convertMonth($('#month').val()), $('#year').val());
+	
+	    console.log(dateto);
+	
+	    datefrom.day = dateto.day;
+	    datefrom.month = dateto.month;
+	    datefrom.year = dateto.year - 1;
 		
 		getTunesOfYou(datefrom, dateto, function () {		
 		    $('body').removeClass('loading').addClass("zoom").addClass("reveal");
