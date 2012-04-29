@@ -32,9 +32,12 @@
 		form input::-webkit-input-placeholder { color: #777; }
 		form input:-moz-placeholder { color: #777; }
 		
-		form button { display: block; background: #983C5F; color: #fff; border-radius: 50%; font-size: 22px; border: none; font-family: Bello-Pro, sans-serif; font-weight: 400; height: 65px; width: 65px; line-height: 21px; text-align: center; margin: 30px auto 20px;  -webkit-transition: all ease-out 0.7s; }
+		form button, a#resetlink { display: block; background: #983C5F; color: #fff; border-radius: 50%; font-size: 22px; border: none; font-family: Bello-Pro, sans-serif; font-weight: 400; height: 65px; width: 65px; line-height: 21px; text-align: center; margin: 30px auto 20px;  -webkit-transition: all ease-out 0.7s; }
 		
-		form button:hover { background: #000; -webkit-transition: all ease-in 0.2s; }
+		a#resetlink { padding-top: 10px; height: 56px; text-decoration: none;}
+		
+		form button:hover, a#resetlink:hover { background: #000; -webkit-transition: all ease-in 0.2s; }
+		a#resetlink:hover { background-color: #e1b12b; }
 		
 		#intro { margin-left: 40%; }
 		.zoom #intro { display: none; }
@@ -61,8 +64,11 @@
 		#results #track-wrapper { font-family: Bello-Pro; font-size: 32px; line-height: 32px; width: 100%; color: #e1b12b; }
 		#results #album { font-style: italics; }
 		
-		#logos { width: 200px;  height: 50px; position: absolute; bottom: 0; right: 5%; }
+		#logos { width: 200px;  height: 30px; position: absolute; bottom: 10px; right: 5%; margin: 0; padding: 0; opacity: 0.7; }
+		#logos:hover { opacity: 1; }
 		#logos li { list-style: none; margin: 0; padding: 0; display: inline; }
+		#logos a#rovi { text-indent: -1000em; background: url(images/rovi-grey.png) scroll no-repeat 0 0; width: 123px; height: 30px; overflow: hidden; display: inline-block; }
+		#logos a#rdio { text-indent: -1000em; background: url(images/rdio-grey.png) scroll no-repeat 0 0; width: 63px; height: 30px; overflow: hidden; display: inline-block; }
 		
 		#resetlink { color: #fff;  }
 		
