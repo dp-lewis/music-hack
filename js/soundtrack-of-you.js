@@ -114,7 +114,14 @@ function getTunesOfYou(from, to, success) {
         });
         // this is a valid playback token for localhost.
         // but you should go get your own for your own domain.
-        $('#api').rdio('GAlNi78J_____zlyYWs5ZG02N2pkaHlhcWsyOWJtYjkyN2xvY2FsaG9zdEbwl7EHvbylWSWFWYMZwfc=');
+        // GBBPnL2m_____2o1a3JjMmJxcDNwZGs5MjNuMnBxdmZ4OXd3dy5oYWNrZGF5cy5jb21Mg2Qy7muLnC90jWLt62al
+
+        var keys = {
+            'www.hackdays.com': 'GBBPnL2m_____2o1a3JjMmJxcDNwZGs5MjNuMnBxdmZ4OXd3dy5oYWNrZGF5cy5jb21Mg2Qy7muLnC90jWLt62al',
+            'localhost': 'GAlNi78J_____zlyYWs5ZG02N2pkaHlhcWsyOWJtYjkyN2xvY2FsaG9zdEbwl7EHvbylWSWFWYMZwfc='
+        }
+
+        $('#api').rdio(keys[document.domain]);
 
         $('#previous').click(function () {
             $('#api').rdio().previous();
